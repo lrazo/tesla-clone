@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from "styled-components"
-import Fade from 'react-awesome-reveal'
+import { Slide, Fade } from 'react-awesome-reveal'
 
 function Section({ title, description, leftBtnText, rightBtnText, backgroundImg }) {
   return (
       <Wrap bgImage={ backgroundImg }>
-          <Fade direction="up" duration={1000} triggerOnce>
+          <Fade direction="up" duration={1000}>
             <ItemText>
                 <h1>{ title }</h1>
                 <p>{ description }</p>
@@ -34,6 +34,7 @@ function Section({ title, description, leftBtnText, rightBtnText, backgroundImg 
 export default Section
 
 const Wrap = styled.div`
+    z-index: 10;
     width: 100vw;
     height: 100vh;
     background-size: cover;
@@ -50,6 +51,7 @@ const Wrap = styled.div`
 const ItemText = styled.div`
     padding-top: 15vh;
     text-align: center; 
+    z-index: -1;
 `
 
 const ButtonGroup = styled.div`
