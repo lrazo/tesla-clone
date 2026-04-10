@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 function Header() {
   const [burgerStatus, setBurgerStatus] = useState(false);
   const cars = useSelector(selectCars);
-  console.log(cars);
+  
 
   return (
     <Container>
@@ -16,10 +16,9 @@ function Header() {
             <img src="/images/logo.svg" alt=""/>
         </a>
         <Menu>
-            <p><a href="#">Model S</a></p>
-            <p><a href="#">Model 3</a></p>
-            <p><a href="#">Model X</a></p>
-            <p><a href="#">Model Y</a></p>
+            {cars && cars.map((car, index)=>(
+                <p><a key={index} href="#">{car}</a></p>
+            ))}
         </Menu>
         <RightMenu>
             <a href="#">Shop</a>
@@ -30,6 +29,9 @@ function Header() {
             <CloseWrapper>
                 <CustomClose onClick={()=>setBurgerStatus(false)}/>
             </CloseWrapper>
+            {cars && cars.map((car, index) => (
+                <li key={index}><a href="#">{car}</a></li>
+            ))}
             <li><a href='#'>Existing Inventory</a></li>
             <li><a href='#'>Used Inventory</a></li>
             <li><a href='#'>Trade-in</a></li>
